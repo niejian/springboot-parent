@@ -1,5 +1,5 @@
 ##说明
-*eureka：注册中心
+* eureka：注册中心
 
 ###实现远程调用
 ```java
@@ -26,7 +26,7 @@
     }
 ```
 
-*Ribbon：Spring Cloud Ribbon是基于Netflix Ribbon实现的一套客户端负载均衡的工具。它是一个基于HTTP和TCP的客户端负载均衡器。它可以通过在客户端中配置ribbonServerList来设置服务端列表去轮询访问以达到均衡负载的作用。
+* Ribbon：Spring Cloud Ribbon是基于Netflix Ribbon实现的一套客户端负载均衡的工具。它是一个基于HTTP和TCP的客户端负载均衡器。它可以通过在客户端中配置ribbonServerList来设置服务端列表去轮询访问以达到均衡负载的作用。
 ```java
 //使用Ribbon来做服务的负载均衡
 @Bean
