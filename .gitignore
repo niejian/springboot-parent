@@ -1,0 +1,38 @@
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+#hs_err_pid*
+target/
+.settings/
+*.classpath
+*.log
+*.log.*
+*.qqconnect.log*
+.project
+.metadata/
+.idea/*
+#OfficeAuto-dubbo/OfficeAuto-dubbo.iml
+#OfficeAuto-parent/OfficeAuto-parent.iml
+#OfficeAuto-admin/OfficeAuto-admin.iml
+#OfficeAuto-common/OfficeAuto-common.iml
+#OfficeAuto-control/OfficeAuto-control.iml
+#OfficeAuto-service/OfficeAuto-service.iml
+#OfficeAuto-timer/OfficeAuto-timer.iml
+RemoteSystemsTempFiles/
+bin/
+#OfficeAuto-admin/.gitignore
+#OfficeAuto-common/.gitignore
+#OfficeAuto-timer/.gitignore
+#OfficeAuto-service/.gitignore
+#OfficeAuto-control/.gitignore
+#OfficeAuto-parent.iml
+#OfficeAuto-common20170810BAK/
+*.iml

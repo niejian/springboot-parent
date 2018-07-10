@@ -1,0 +1,9 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: service-provider
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka #属性对应服务注册中心的配置内容，指定服务注册中心的位置
