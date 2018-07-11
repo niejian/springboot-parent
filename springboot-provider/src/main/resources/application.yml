@@ -3,7 +3,23 @@ server:
 spring:
   application:
     name: service-provider
+  profiles:
+    active: active
+
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:7001/eureka #ÊôĞÔ¶ÔÓ¦·şÎñ×¢²áÖĞĞÄµÄÅäÖÃÄÚÈİ£¬Ö¸¶¨·şÎñ×¢²áÖĞĞÄµÄÎ»ÖÃ
+      defaultZone: http://localhost:7001/eureka #ï¿½ï¿½ï¿½Ô¶ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ£ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½Î»ï¿½ï¿½
+---
+# java -jar xxx.jar --spring.profiles.active = dev
+server:
+  port: 8002
+spring:
+  application:
+    name: service-provider
+  profiles: dev
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka

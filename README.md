@@ -85,7 +85,10 @@ public Map<String, Object> consumerFeignCallService() {
  
  > 2.其次，无法直接复用既有接口。当我们需要对一个即有的集群内访问接口，实现外部服务访问时，我们不得不通过在原有接口上增加校验逻辑，或增加一个代理调用来实现权限控制，无法直接复用原有的接口。
  
- 服务网关除了服务路由、负载均衡的的作用外还需要有权限校验的功能。
+ > 3.所有的请求都先请求到网关地址，网关地址再根据服务节点的实际情况来负载到具体的节点。
+ 
+ > 4. 服务网关除了服务路由、负载均衡的的作用外还需要有权限校验的功能。
+ 
  * * 构建服网关
  
  ```xml
@@ -98,6 +101,35 @@ public Map<String, Object> consumerFeignCallService() {
      <groupId>org.springframework.cloud</groupId>
      <artifactId>spring-cloud-starter-eureka</artifactId>
 </dependency>
+```
+* * yml配置
+```yaml
+server:
+  port: 6001
+spring:
+  application:
+    name: api-gateway
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+#配置路由规则
+zuul:
+  routes:
+    hello:
+      path: /gateway-api/** # 这里的配置表示，访问http://localhost:6001/gateway-api/** 直接重定向到http://localhost:9001/**
+                            # 这样调用的话，做不到负责均衡的目的。没增加一个服务实例，就需要增加一个url来映射
+      url: http://localhost:9001/
+```
+* * 使用serviceId（注册在eureka的服务节点），自动做到服务节点的负载均衡
+```yaml
+zuul:
+  routes:
+    #api模块
+    api:
+      path: /gateway-api/**
+      serviceId: service-provider, service-consumer
+  prefix: /abc/ #访问前缀
 ```
 
 

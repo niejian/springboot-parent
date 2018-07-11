@@ -7,3 +7,18 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:7001/eureka/
+zuul:
+  routes:
+    #api模块
+    api:
+      path: /gateway-api/**
+      serviceId: service-provider, service-consumer
+  prefix: /abc/ #访问前缀
+  #eureka注册的服务Id
+#配置路由规则
+#zuul:
+#  routes:
+#    hello:
+#      path: /gateway-api/** # 这里的配置表示，访问http://localhost:6001/gateway-api/** 直接重定向到http://localhost:9001/**
+#                            # 这样调用的话，做不到负责均衡的目的。没增加一个服务实例，就需要增加一个url来映射
+#      url: http://localhost:9001/

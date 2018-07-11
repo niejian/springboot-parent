@@ -1,4 +1,4 @@
-package cn.com.springCloud.provider;/**
+package cn.com.springCloud;/**
  * Created by niejian on 2018/7/10.
  */
 
