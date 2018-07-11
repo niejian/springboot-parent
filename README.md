@@ -52,6 +52,13 @@ public Map<String, Object> RibbonRequest() {
 2、声明调用端代码，实现远程调用
 
 ```java
+//声明restTemplate。同时加上loadbalanced注解
+@Bean
+@LoadBalanced
+public RestTemplate restTemplate() {
+    return new RestTemplate();
+}
+
 //填写注册的服务名称
 @FeignClient(value = "service-provider")
 public interface FeignGetService {
@@ -73,6 +80,28 @@ public Map<String, Object> consumerFeignCallService() {
     return this.feignGetService.consumerFeignCallService();
 }
 ```
+* 服务网关
+ > 1.在没有网关这一层的时候，接口都是通过rest的形式调用，也就是相当于知道服务提供者的地址就可以调用。所以需要增加相关的权限校验。
+ 
+ > 2.其次，无法直接复用既有接口。当我们需要对一个即有的集群内访问接口，实现外部服务访问时，我们不得不通过在原有接口上增加校验逻辑，或增加一个代理调用来实现权限控制，无法直接复用原有的接口。
+ 
+ 服务网关除了服务路由、负载均衡的的作用外还需要有权限校验的功能。
+ * * 构建服网关
+ 
+ ```xml
+ <!--添加依赖-->
+<dependency>
+     <groupId>org.springframework.cloud</groupId>
+     <artifactId>spring-cloud-starter-zuul</artifactId>
+</dependency>
+<dependency>
+     <groupId>org.springframework.cloud</groupId>
+     <artifactId>spring-cloud-starter-eureka</artifactId>
+</dependency>
+```
+
+
+
 
 
 
