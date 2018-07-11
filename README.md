@@ -1,7 +1,7 @@
-##说明
+## 说明
 * eureka：注册中心
 
-###实现远程调用
+### 实现远程调用
 ```java
     //声明restTemplate
     @Bean
@@ -45,6 +45,7 @@ public Map<String, Object> RibbonRequest() {
 
 ```
 * 使用Feign消费服务
+> feign默认集成了Ribbon也就是默认集成了负载均衡的功能特性。
 
 1、在主类添加注解 ***@EnableFeignClients***
 
