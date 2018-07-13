@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @EnableZuulProxy
-@ZuulC
+
 //@ComponentScan({
 //        "cn.com.springCloud.zuul"
 //})

@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: eureka-server-cluster
+  profiles: server1
+server:
+  port: 7001
+eureka:
+  instance:
+    hostname: eureka-server1
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      default-zone: http://localhost:7002/eureka/
+
+---
+spring:
+  application:
+    name: eureka-server-cluster
+  profiles: server2
+server:
+ port: 7002
+eureka:
+ instance:
+   hostname: eureka-server2
+ client:
+   register-with-eureka: true
+   fetch-registry: true
+   service-url:
+     default-zone: http://localhost:7001/eureka/

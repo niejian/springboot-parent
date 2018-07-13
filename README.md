@@ -1,6 +1,15 @@
 ## 说明
 * eureka：注册中心
 
+eureka-server：注册中心；
+
+eureka：注册客服端；包括服务提供者和服务消费者
+* * eureka集群配置
+
+注册中心示意图
+![](http://upload-images.jianshu.io/upload_images/6944619-6f03a2c9ad708f6e.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
 ### 实现远程调用
 ```java
     //声明restTemplate
