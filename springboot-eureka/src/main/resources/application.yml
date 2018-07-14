@@ -10,8 +10,8 @@ eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
-    service-url:
-      default-zone: http://localhost:7002/eureka/
+    serviceUrl:
+      defaultZone: http://localhost:7002/eureka/
 
 ---
 spring:
@@ -26,5 +26,5 @@ eureka:
  client:
    register-with-eureka: true
    fetch-registry: true
-   service-url:
-     default-zone: http://localhost:7001/eureka/
+   serviceUrl:
+     defaultZone: http://localhost:7001/eureka/

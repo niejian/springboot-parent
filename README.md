@@ -8,8 +8,48 @@ eureka：注册客服端；包括服务提供者和服务消费者
 
 注册中心示意图
 ![](http://upload-images.jianshu.io/upload_images/6944619-6f03a2c9ad708f6e.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+* 
+    * 具体配置如下
+    
+        * 1.注册中心配置（eureka-server）
+        
+            实例是两个节点做的集群，关键的配置是
+            defaultZone设置成对方节点的地址，目的上将自己注册到对方的上面去。
+            
+            fetch-registry：表示是否从eureka server获取注册信息，如果是单一节点，不需要同步其他eureka server节点，则可以设置为false，但此处为集群，应该设置为true，默认为true，可不设置。
+            
+            register-with-eureka：表示是否将自己注册到eureka server，因为要构建集群环境，需要将自己注册到及群众，所以应该开启。默认为true，可不显式设置。
+            ```yaml
+            spring:
+            application:
+              name: eureka-server-cluster
+            profiles: server1
+          
+            client:
+              register-with-eureka: true
+              fetch-registry: true
+              serviceUrl:
+                defaultZone: http://localhost:7002/eureka/
+    
+          ---
+          
+           client:
+             register-with-eureka: true
+             fetch-registry: true
+             serviceUrl:
+               defaultZone: http://localhost:7001/eureka/
 
-
+            ```
+            * 2、客户端注册
+            
+                客户端的defaultZone的地址就写所有注册中心的地址，如下:
+                ```yaml
+                eureka:
+                  client:
+                    service-url:
+                      defaultZone: http://localhost:7001/eureka,http://localhost:7002/eureka #将服务注册到多实例的注册中心去
+                
+                ```
 ### 实现远程调用
 ```java
     //声明restTemplate

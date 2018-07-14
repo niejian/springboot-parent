@@ -5,11 +5,15 @@ spring:
     name: service-provider
   profiles:
     active: active
-
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:7001/eureka #���Զ�Ӧ����ע�����ĵ��������ݣ�ָ������ע�����ĵ�λ��
+      defaultZone: http://localhost:7001/eureka,http://localhost:7002/eureka #将服务注册到注册中心集群当中去
+
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:7001/eureka #注册中心是单实例的配置
 ---
 # java -jar xxx.jar --spring.profiles.active = dev
 server:
