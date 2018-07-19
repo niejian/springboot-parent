@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author niejian
  * @date 2018/7/12
  */
-@Component
+//@Component
 public class MyGatewayFilter extends ZuulFilter{
 
     private Logger logger = LoggerFactory.getLogger(MyGatewayFilter.class);
@@ -76,20 +76,20 @@ public class MyGatewayFilter extends ZuulFilter{
      */
     @Override
     public Object run() throws ZuulException {
-        RequestContext currentContext = RequestContext.getCurrentContext();
-        HttpServletRequest request = currentContext.getRequest();
-        logger.info("send {} request to {}", request.getMethod(), request.getRequestURL().toString());
-
-        Object accessToken = request.getParameter("accessToken");
-        if(accessToken == null) {
-            logger.warn("access token is empty");
-            //令zuul过滤该请求，不对其进行路由
-            currentContext.setSendZuulResponse(false);
-            //设置了其返回的错误码，当然我们也可以进一步优化我们的返回
-            currentContext.setResponseStatusCode(401);
-            return null;
-        }
-        logger.info("access token ok");
+//        RequestContext currentContext = RequestContext.getCurrentContext();
+//        HttpServletRequest request = currentContext.getRequest();
+//        logger.info("send {} request to {}", request.getMethod(), request.getRequestURL().toString());
+//
+//        Object accessToken = request.getParameter("accessToken");
+//        if(accessToken == null) {
+//            logger.warn("access token is empty");
+//            //令zuul过滤该请求，不对其进行路由
+//            currentContext.setSendZuulResponse(false);
+//            //设置了其返回的错误码，当然我们也可以进一步优化我们的返回
+//            currentContext.setResponseStatusCode(401);
+//            return null;
+//        }
+//        logger.info("access token ok");
         return null;
     }
 }

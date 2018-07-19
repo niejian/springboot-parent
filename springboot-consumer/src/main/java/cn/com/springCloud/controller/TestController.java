@@ -1,10 +1,13 @@
 package cn.com.springCloud.controller;
 
 import cn.com.springCloud.service.FeignGetService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +20,7 @@ import java.util.Map;
  * @author niejian
  * @date 2018/7/10
  */
+@Api(value = "消费者接口")
 @RestController
 public class TestController {
 
@@ -52,6 +56,7 @@ public class TestController {
      * 调用service，
      * @return
      */
+    @ApiOperation(value = "01.消费者-消息提供获取信息", notes = "06.消费者-消息提供获取信息", httpMethod = "GET", produces = MediaType.APPLICATION_JSON_VALUE)
     @GetMapping(value = "/consumerFeignCallService")
     public Map<String, Object> consumerFeignCallService() {
         return this.feignGetService.consumerFeignCallService();

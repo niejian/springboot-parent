@@ -12,7 +12,12 @@ zuul:
     #api模块
     api:
       path: /gateway-api/**
-      serviceId: service-provider, service-consumer
+      serviceId: service-consumer #serviceId指的是eureka上面注册的服务名称
+                                                    #发送请求：http://localhost:6001/gateway-api/xxx
+#    api:
+#      path: /gateway-api/**
+#      serviceId: service-consumer #serviceId指的是eureka上面注册的服务名称
+#                                                        #发送请求：http://localhost:6001/gateway-api/xxx                                                service-consumer
   prefix: /abc/ #访问前缀
   #eureka注册的服务Id
 #配置路由规则
